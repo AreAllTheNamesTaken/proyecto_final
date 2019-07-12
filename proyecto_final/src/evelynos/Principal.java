@@ -79,6 +79,6 @@ public class Principal {
     
     public void test  () {
     
-    
+     int x ; 
     }
 }
