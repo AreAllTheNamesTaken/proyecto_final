@@ -15,6 +15,6 @@ public class Nodo
     }
     
     public String toString(){
-        return nombre + " Su dato es " + dato;
+        return nombre + " El dato es  : " + dato;
     }
 }
