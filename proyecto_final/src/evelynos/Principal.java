@@ -74,11 +74,8 @@ public class Principal {
         	
         }while(opcion != 5);
         
-
+    
     }
     
-    public void test  () {
-    
-     int x ; 
-    }
 }
+
