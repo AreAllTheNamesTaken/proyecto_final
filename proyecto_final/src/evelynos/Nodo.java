@@ -7,9 +7,8 @@ public class Nodo
     Nodo hijoizquierdo;
     Nodo hijjoderecho;
 
-    public Nodo(int dato, String nom) {
+    public Nodo(int dato) {
         this.dato = dato;
-        this.nombre = nom;
         this.hijoizquierdo = null;
         this.hijjoderecho = null;
     }

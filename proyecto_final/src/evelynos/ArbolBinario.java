@@ -13,8 +13,8 @@ public class ArbolBinario {
     }
 
     //metodo para insertar un Nodo
-    public void agregarNodoo(int d, String nom) {
-        Nodo nuevo = new Nodo(d, nom);
+    public void agregarNodoo(int d) {
+        Nodo nuevo = new Nodo(d);
         if (raiz == null) {
             raiz = nuevo;
         } else {
@@ -175,4 +175,6 @@ public class ArbolBinario {
           System.out.println("El nodo que se reemplaza  es " + reemplazo);
           return reemplazo;
       }
+
+   
 }

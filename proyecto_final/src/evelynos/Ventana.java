@@ -1,6 +1,8 @@
 package evelynos;
 
+import java.util.Vector;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -13,12 +15,11 @@ import javax.swing.JOptionPane;
  * @author Usuario
  */
 public class Ventana extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Ventana
-     */
+     ArbolBinario arbol = new ArbolBinario();
+    String metodo = "InOrder";
     public Ventana() {
         initComponents();
+        Edad.setValue(new Integer(0));
     }
 
     /**
@@ -35,8 +36,9 @@ public class Ventana extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
-        Dato = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
+        Edad = new javax.swing.JFormattedTextField();
+        Nombre = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -65,15 +67,7 @@ public class Ventana extends javax.swing.JFrame {
             new String [] {
                 "Dato Numero"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         jScrollPane1.setViewportView(Tabla);
         if (Tabla.getColumnModel().getColumnCount() > 0) {
             Tabla.getColumnModel().getColumn(0).setResizable(false);
@@ -105,22 +99,26 @@ public class Ventana extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Dato, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Nombre)
+                            .addComponent(Edad))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(261, Short.MAX_VALUE))
+                .addGap(261, 261, 261))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jLabel2)
-                .addGap(37, 37, 37)
+                .addGap(18, 18, 18)
+                .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Dato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                    .addComponent(jButton5)
+                    .addComponent(Edad, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
         );
@@ -134,12 +132,32 @@ public class Ventana extends javax.swing.JFrame {
         jLabel1.setText("Menu ");
 
         jButton1.setText("InOrden");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("PostOrden");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("PreOrden");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Eliminar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -205,18 +223,61 @@ public class Ventana extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-      
-        if ( Dato.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "El arbol esta vacio", "Favor de agregar un valor ", JOptionPane.INFORMATION_MESSAGE);
+       if (Nombre.getText() == null || Nombre.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El arbol esta vacio", "!CUIDADO¡", JOptionPane.INFORMATION_MESSAGE);
         } else {
 
-            Integer edad = (Integer) Dato.getValue();
+            Integer edad = (Integer) Edad.getValue();
 
-            abo.agregarNodo(edad.intValue(), Nombre.getText());
+            arbol.agregarNodoo(edad.intValue());
             refrescar(metodo);
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        metodo = "InOrden";
+        refrescar(metodo);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+          metodo = "PosOrden";
+          refrescar(metodo);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        metodo = "PreOrden";
+        refrescar(metodo);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        int renglon = Tabla.getSelectedRow();
+        String dato = Tabla.getModel().getValueAt(renglon, 1).toString();
+        arbol.eliminar(Integer.parseInt(dato));
+        refrescar(metodo);
+    }//GEN-LAST:event_jButton4ActionPerformed
+ public void refrescar(String metodo) {
+        Vector renglones = new Vector();
+        DefaultTableModel model = (DefaultTableModel) Tabla.getModel();
+        model.getDataVector().clear();
+        switch (metodo) {
+            case "PreOrden":
+                renglones = arbol.llamaPreOrder(arbol.raiz);
+                break;
+            case "PosOrden":
+                renglones = arbol.llamaPosOrder(arbol.raiz);
+                break;
+            case "InOrden":
+                renglones = arbol.llamaInOrder(arbol.raiz);
+                break;
+            default:
+                renglones = arbol.llamaInOrder(arbol.raiz);
+                break;
+        }
+        for (int i = 0; i < renglones.size(); i++) {
+            Nodo N = (Nodo) renglones.get(i);
+            model.addRow(new Object[]{ N.dato});
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -251,9 +312,15 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
     }
-
+   private void limpiartabla() {
+        DefaultTableModel model = (DefaultTableModel) Tabla.getModel();
+        for (int i = 0; i < model.getRowCount(); i++) {
+            model.removeRow(i);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Dato;
+    private javax.swing.JFormattedTextField Edad;
+    private javax.swing.JTextField Nombre;
     private javax.swing.JTable Tabla;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
