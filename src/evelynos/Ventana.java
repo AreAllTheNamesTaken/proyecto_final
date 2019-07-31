@@ -14,6 +14,9 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Usuario
  */
+
+
+
 public class Ventana extends javax.swing.JFrame {
      ArbolBinario arbol = new ArbolBinario();
     String metodo = "InOrder";
