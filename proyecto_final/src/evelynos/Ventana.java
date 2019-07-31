@@ -83,6 +83,13 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
 
+        Nombre.setText("UTCH");
+        Nombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NombreActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -250,11 +257,15 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        int renglon = Tabla.getSelectedRow();
-        String dato = Tabla.getModel().getValueAt(renglon, 1).toString();
+       int renglon = Tabla.getSelectedRow();
+        String dato = Tabla.getModel().getValueAt(renglon,0).toString();
         arbol.eliminar(Integer.parseInt(dato));
         refrescar(metodo);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NombreActionPerformed
  public void refrescar(String metodo) {
         Vector renglones = new Vector();
         DefaultTableModel model = (DefaultTableModel) Tabla.getModel();
