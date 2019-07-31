@@ -172,7 +172,7 @@ public class ArbolBinario {
               reemplazarpadre.hijoizquierdo=reemplazo.hijjoderecho;
               reemplazo.hijjoderecho=nodoReemp.hijjoderecho;
           }
-          System.out.println("El nodo reemplazo es " + reemplazo);
+          System.out.println("El nodo que se reemplaza  es " + reemplazo);
           return reemplazo;
       }
 }
