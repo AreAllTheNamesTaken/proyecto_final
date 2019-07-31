@@ -235,7 +235,9 @@ public class Ventana extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-       if (Nombre.getText() == null || Nombre.getText().isEmpty()) {
+       
+        //este es el botón donde se agrega
+        if (Nombre.getText() == null || Nombre.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "El arbol esta vacio", "!CUIDADO¡", JOptionPane.INFORMATION_MESSAGE);
         } else {
 
