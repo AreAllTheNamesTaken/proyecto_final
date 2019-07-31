@@ -1,39 +1,19 @@
 package evelynos;
 
-
+// Esto lo subiria IVAN//
 public class Nodo
-{
-	public int info;
-	public Nodo izq;
-	public Nodo der;
-	
-	public Nodo() {
+{  int dato;
+    String nombre;
+    Nodo hijoizquierdo;
+    Nodo hijjoderecho;
 
-	}
-
-	public int getInfo() {
-		return info;
-	}
-
-	public void setInfo(int info) {
-		this.info = info;
-	}
-
-	public Nodo getIzq() {
-		return izq;
-	}
-
-	public void setIzq(Nodo izq) {
-		this.izq = izq;
-	}
-
-	public Nodo getDer() {
-		return der;
-	}
-
-	public void setDer(Nodo der) {
-		this.der = der;
-	}
-	
-	
+    public Nodo(int dato) {
+        this.dato = dato;
+        this.hijoizquierdo = null;
+        this.hijjoderecho = null;
+    }
+    
+    public String toString(){
+        return nombre + " El dato es  : " + dato;
+    }
 }
