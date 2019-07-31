@@ -41,7 +41,7 @@ public class ArbolBinario {
 
     }
     //Metodo para saber cuando esta vacio
-    public boolean estaVacio() {
+    public boolean estaVacioo() {
         return raiz == null;
     }
     
