@@ -13,7 +13,7 @@ public class ArbolBinario {
     }
 
     //metodo para insertar un Nodo
-    public void agregarNodo(int d, String nom) {
+    public void agregarNodoo(int d, String nom) {
         Nodo nuevo = new Nodo(d, nom);
         if (raiz == null) {
             raiz = nuevo;
